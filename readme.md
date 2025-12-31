@@ -1,53 +1,23 @@
 # House Price Prediction
 
-This repository contains trained machine learning models for predicting house prices using various regression algorithms. The models include **Random Forest**, **XGBoost**, and their tuned versions for improved performance.
-
+A machine learning project that predicts house prices using multiple regression models, compares their performance, and provides an interactive **Streamlit web application** for visualization and inference.
 ---
 
-## Project Structure
+## 🧠 Models Used
 
-```
-trained_models/
-├── rf_model.pkl        # Random Forest model
-├── xgb_model.pkl       # XGBoost model
-├── best_rf.pkl         # Tuned Random Forest model
-└── best_xgb.pkl        # Tuned XGBoost model
-```
+- Linear Regression  
+- Ridge Regression  
+- Random Forest Regressor  
+- Tuned Random Forest Regressor  
+- **Tuned XGBoost Regressor**
 
----
+## 📌 Key Highlights
 
-## Installation
-
-Install the required Python libraries:
-
-```bash
-pip install pandas numpy scikit-learn xgboost joblib matplotlib seaborn folium
-```
-
----
-
-## Usage
-
-Load the trained models and predict house prices:
-
-```python
-import joblib
-
-# Load models
-rf_model = joblib.load('trained_models/rf_model.pkl')
-xgb_model = joblib.load('trained_models/xgb_model.pkl')
-best_rf = joblib.load('trained_models/best_rf.pkl')
-best_xgb = joblib.load('trained_models/best_xgb.pkl')
-
-# Sample input for prediction
-sample_input = [[3, 2, 2000, 10000, 2, 0, 0, 3, 8, 2000, 0, 1990, 0, 98001, 47.5480, -121.9836, 2000, 10000]]
-
-# Predict prices
-print('Random Forest Prediction: $', rf_model.predict(sample_input)[0])
-print('XGBoost Prediction: $', xgb_model.predict(sample_input)[0])
-print('Tuned Random Forest Prediction: $', best_rf.predict(sample_input)[0])
-print('Tuned XGBoost Prediction: $', best_xgb.predict(sample_input)[0])
-```
+- Implemented and compared **Linear, Ridge, Random Forest, and XGBoost** models  
+- Applied **hyperparameter tuning** for Random Forest and XGBoost  
+- Evaluated models using **MAE, MSE, RMSE, and R²**  
+- Built an interactive **Streamlit app (`app.py`)**  
+- Large trained models handled using **Git LFS**
 
 ---
 
@@ -68,7 +38,47 @@ print('Tuned XGBoost Prediction: $', best_xgb.predict(sample_input)[0])
 - R² (closer to 1 is better)
   
 **Observation:** Tuned XGBoost performs best with the lowest errors and highest R².
+---
 
+## 🖥️ Streamlit Application
+
+A Streamlit web application has been added using **`app.py`**, allowing users to:
+
+- View predictions  
+- Compare model performance  
+- Interact with trained models  
+
+### ▶️ Run the app locally
+
+```bash
+streamlit run app.py
+```
+
+---
+
+## 📂 Project Structure
+
+```
+House-Price-Prediction/
+│
+├── app.py                  # Streamlit application
+├── trained_models/         # Trained ML models (Git LFS)
+├── artifacts/              # Predictions & test data
+├── notebooks/              # EDA & model training notebooks
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## 🛠️ Tech Stack
+
+- Python
+- Pandas, NumPy
+- Scikit-learn
+- XGBoost
+- Streamlit
+- Git & Git LFS
 ---
 
 ## Key Features
