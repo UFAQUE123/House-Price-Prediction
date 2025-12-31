@@ -1,4 +1,4 @@
-Model,MAE,MSE,RMSE,R2 Score
+Model,MAE (lower is better),MSE (lower is better),RMSE (lower is better),R2 Score (close to 1 is better)
 Tuned XGBoost Regressor,67629.609,18270760960.0,135169.379,0.879
 XGBoost Regressor,70577.656,20883933184.0,144512.744,0.862
 Random Forest,72756.752,22003554576.743,148335.952,0.854

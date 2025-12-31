@@ -92,7 +92,7 @@ with tab1:
     results = pd.read_csv("artifacts/model_results.csv")
     # Display table
     st.dataframe(
-                 results.sort_values(by="R2 Score", ascending=False),
+                 results.sort_values(by='R2 Score (close to 1 is better)', ascending=False),
                  use_container_width=True,
                  hide_index=True
                 )
@@ -197,4 +197,15 @@ with tab3:
      ax[1,0].set_ylabel('Mean Squared Error')
      ax[1,1].set_ylabel('Root Mean Squared Error')
      st.pyplot(fig2)
+     st.info("""
+             ### 📌 Conclusion
 
+            - **Tuned XGBoost** achieves the lowest errors (**MAE, MSE, RMSE**) and the highest **R²**,  
+                                making it the most reliable model for housing price prediction.
+
+            - **Random Forest** and **Tuned Random Forest** perform slightly worse than XGBoost,  
+                                                            but still outperform linear models.
+
+            - **Linear Regression** and **Ridge Regression** struggle to capture non-linear relationships  
+                        in the dataset, as shown by significantly higher error metrics.
+            """)
