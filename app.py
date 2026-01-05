@@ -1,3 +1,4 @@
+#-------------------------------House Price Prediction App-------------------------------------------#
 # import libraries
 import streamlit as st
 import pandas as pd
@@ -64,17 +65,10 @@ input_data = pd.DataFrame([[
     'sqft_basement','house_age','renovated','zipcode',
     'lat','long','sqft_living15','sqft_lot15'
 ])
-
 # -------------------- PREDICTION --------------------
 st.subheader("📊 Prediction Result")
 if st.button("Predict House Price"):
-    st.success("Tuned XGBoost (Best Model): " f"💰 ${best_xgb.predict(input_data)[0]:,.2f}")
-#----------------------------------Tabs allocation--------------------------------------
-tab1, tab2, tab3 = st.tabs([
-    "📊 Model Comparison Table",
-    "📉 Actual vs Predicted Price Distribution",
-    "📊 Error & Accuracy Comparison"
-])   
+    st.success("Tuned XGBoost (Best Model): " f"💰 ${best_xgb.predict(input_data)[0]:,.2f}")   
 #----------------------------------loadind model's predictions-------------
 y_test = np.load("artifacts/y_test.npy")
 ypipe_pred = np.load("artifacts/ypipe_pred.npy")
@@ -85,6 +79,13 @@ y_pred_best_rf = np.load("artifacts/y_pred_best_rf.npy")
 y_pred_best_xgb = np.load("artifacts/y_pred_best_xgb.npy")
 #----------------------------------Load metrics table--------------------
 results = pd.read_csv("artifacts/model_results.csv")
+#----------------------------------Tabs allocation--------------------------------------
+tab1, tab2, tab3, tab4 = st.tabs([
+    "📊 Model Comparison Table",
+    "📉 Actual vs Predicted Price Distribution",
+    "📊 Error & Accuracy Comparison",
+    "📌 Conclusion" 
+])
 #------------------------------------Model comparison table----------------------------
 with tab1:
     st.subheader("📊 Model Performance Comparison")
@@ -197,6 +198,8 @@ with tab3:
      ax[1,0].set_ylabel('Mean Squared Error')
      ax[1,1].set_ylabel('Root Mean Squared Error')
      st.pyplot(fig2)
+#-------------------------------------------conclusion------------------------------------------
+with tab4:
      st.info("""
              ### 📌 Conclusion
 
@@ -209,3 +212,4 @@ with tab3:
             - **Linear Regression** and **Ridge Regression** struggle to capture non-linear relationships  
                         in the dataset, as shown by significantly higher error metrics.
             """)
+     
